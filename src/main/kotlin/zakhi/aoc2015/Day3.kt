@@ -23,8 +23,6 @@ fun main() {
 }
 
 
-private typealias Position = Pair<Int, Int>
-
 private class Route {
 
     private var currentPosition = 0 to 0
@@ -35,18 +33,16 @@ private class Route {
         positions.add(currentPosition)
     }
 
-    val visitedPositions: Set<Position> = positions
+    val visitedPositions: Set<Point> = positions
 }
 
 
 private val Int.isOdd get() = this % 2 != 0
 
-private fun offsetOf(move: Char): Position = when (move) {
+private fun offsetOf(move: Char): Point = when (move) {
     '^' -> 0 to 1
     '>' -> 1 to 0
     'v' -> 0 to -1
     '<' -> -1 to 0
     else -> throw Exception("Illegal move $move")
 }
-
-private operator fun Position.plus(offset: Position) = first + offset.first to second + offset.second

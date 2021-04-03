@@ -10,3 +10,5 @@ fun List<Int>.toPoint(): Point {
     check(size == 2)
     return get(0) to get(1)
 }
+
+operator fun Point.plus(offset: Point) = this.x + offset.x to this.y + offset.y
