@@ -4,8 +4,8 @@ import zakhi.matchEachLineOf
 
 
 fun main() {
-    val presents = matchEachLineOf("aoc2015/day2", regex = Regex("""(\d+)x(\d+)x(\d+)""")) {
-        Present(it.groupValues.drop(1).map(String::toInt))
+    val presents = matchEachLineOf("aoc2015/day2", regex = Regex("""(\d+)x(\d+)x(\d+)""")) { groups ->
+        Present(groups.toList().map(String::toInt))
     }
 
     val totalWrappingPaper = presents.sumBy(Present::wrappingPaperSize)

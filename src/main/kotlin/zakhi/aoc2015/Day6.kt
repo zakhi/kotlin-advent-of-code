@@ -5,8 +5,8 @@ import zakhi.matchEachLineOf
 
 
 fun main() {
-    val instructions = matchEachLineOf("aoc2015/day6", Regex("""(toggle|turn on|turn off) ([\d,]+) through ([\d,]+)""")) {
-        Instruction(Operation.valueOf(it.groupValues[1]), it.groupValues[2].toPoint(), it.groupValues[3].toPoint())
+    val instructions = matchEachLineOf("aoc2015/day6", Regex("""(toggle|turn on|turn off) ([\d,]+) through ([\d,]+)""")) { (operation, topLeft, bottomRight) ->
+        Instruction(Operation.valueOf(operation), topLeft.toPoint(), bottomRight.toPoint())
     }
 
     println("The number of lights lit is ${numberOfLitLights(instructions)}")
