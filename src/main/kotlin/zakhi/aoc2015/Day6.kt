@@ -18,18 +18,12 @@ private enum class Operation {
     `turn on`, `turn off`, toggle
 }
 
-private data class Instruction(
+private class Instruction(
     val operation: Operation,
     private val topLeft: Point,
     private val bottomRight: Point
 ) {
-    val points get() = sequence {
-        (topLeft.x..bottomRight.x).forEach { x ->
-            (topLeft.y..bottomRight.y).forEach { y ->
-                yield(x to y)
-            }
-        }
-    }
+    val points get() = grid(topLeft.x..bottomRight.x, topLeft.y..bottomRight.y)
 }
 
 private fun numberOfLitLights(instructions: List<Instruction>): Int {

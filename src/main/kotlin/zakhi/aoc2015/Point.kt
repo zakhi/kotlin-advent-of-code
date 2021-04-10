@@ -12,3 +12,7 @@ fun List<Int>.toPoint(): Point {
 }
 
 operator fun Point.plus(offset: Point) = this.x + offset.x to this.y + offset.y
+
+fun grid(xs: Iterable<Int>, ys: Iterable<Int> = xs): Sequence<Point> = xs.asSequence().flatMap { x ->
+    ys.asSequence().map { y -> x to y }
+}
