@@ -1,5 +1,6 @@
 package zakhi
 
+import java.lang.Math.multiplyExact
 import kotlin.math.sqrt
 
 
@@ -41,3 +42,7 @@ fun Int.primeFactors(): Map<Int, Int> = sequence {
 
     if (current > 2) yield(current)
 }.groupingBy { it }.eachCount()
+
+
+fun Iterable<Int>.product(): Int = reduce(Math::multiplyExact)
+fun Iterable<Long>.product(): Long = reduce(Math::multiplyExact)
