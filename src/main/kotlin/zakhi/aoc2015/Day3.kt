@@ -1,6 +1,7 @@
 package zakhi.aoc2015
 
 import zakhi.entireTextOf
+import zakhi.isOdd
 
 
 fun main() {
@@ -24,20 +25,15 @@ fun main() {
 
 
 private class Route {
-
-    private var currentPosition = 0 to 0
-    private val positions = mutableSetOf(currentPosition)
+    private val positions = mutableListOf(0 to 0)
 
     fun move(move: Char) {
-        currentPosition += offsetOf(move)
-        positions.add(currentPosition)
+        positions.add(positions.last() + offsetOf(move))
     }
 
-    val visitedPositions: Set<Point> = positions
+    val visitedPositions: Set<Point> get() = positions.toSet()
 }
 
-
-private val Int.isOdd get() = this % 2 != 0
 
 private fun offsetOf(move: Char): Point = when (move) {
     '^' -> 0 to 1

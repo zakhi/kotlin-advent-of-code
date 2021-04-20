@@ -24,6 +24,7 @@ fun Int.divisors(): Sequence<Int> = sequence {
 
 fun Int.sqrtFloor(): Int = sqrt(toDouble()).toInt()
 
+val Int.isOdd get() = this % 2 != 0
 
 fun Int.primeFactors(): Map<Int, Int> = sequence {
     var current = this@primeFactors
