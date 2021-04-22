@@ -43,7 +43,7 @@ private fun parseProperty(text: String): Pair<String, Int> {
 
 private data class Aunt(
     val number: Int,
-    val properties: Map<String, Int>
+    private val properties: Map<String, Int>
 ) {
 
     fun matches(requirements: Map<String, (Int) -> Boolean>): Boolean = properties.all { (name, count) ->

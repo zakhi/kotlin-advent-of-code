@@ -1,13 +1,13 @@
 package zakhi.aoc2015
 
-import zakhi.entireTextOf
+import zakhi.matchEntireTextOf
 
 
 fun main() {
-    val input = entireTextOf("aoc2015/day22")
-    val (bossHitPoints, bossDamage) = Regex("""Hit Points: (\d+)\nDamage: (\d+)""").find(input)?.destructured ?: throw Exception("invalid input")
+    val boss = matchEntireTextOf("aoc2015/day22", Regex("""Hit Points: (\d+)\nDamage: (\d+)""")) { (hitPoints, damage) ->
+        Boss(hitPoints.toInt(), damage.toInt())
+    }
 
-    val boss = Boss(bossHitPoints.toInt(), bossDamage.toInt())
     val player = Player()
 
     val minimalSpentMana = minimalWinningGameFrom(GameState(boss, player))

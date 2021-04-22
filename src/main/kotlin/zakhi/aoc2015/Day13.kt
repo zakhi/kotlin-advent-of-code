@@ -27,7 +27,7 @@ private fun allArrangementsOf(people: List<String>): List<List<String>> {
 private fun totalHappinessChange(arrangement: List<String>): Int = arrangement.indices.sumBy { index ->
     val person = arrangement[index]
     val nextPerson = arrangement[(index + 1) % arrangement.size]
-    val previousPerson = arrangement[(index - 1 + arrangement.size) % arrangement.size]
+    val previousPerson = arrangement[(index - 1 + arrangement.size) % arrangement.size] // TODO: use mod() in Kotlin 1.5
 
     happinessRules.getValue(person to nextPerson) + happinessRules.getValue(person to previousPerson)
 }

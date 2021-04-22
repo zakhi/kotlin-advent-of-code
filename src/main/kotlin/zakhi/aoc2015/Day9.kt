@@ -20,6 +20,6 @@ private val distances = matchEachLineOf("aoc2015/day9", Regex("""(\w+) to (\w+) 
     setOf(start, end) to distance.toInt()
 }.toMap()
 
-private fun distanceOf(route: List<String>): Int = route.zip(route.drop(1)).sumBy { (start, end) ->
+private fun distanceOf(route: List<String>): Int = route.zipWithNext().sumBy { (start, end) ->
     distances.getValue(setOf(start, end))
 }

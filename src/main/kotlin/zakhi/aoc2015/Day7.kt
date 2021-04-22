@@ -31,11 +31,13 @@ private val formulas = listOf(
 
 private val wireValues = mutableMapOf<String, Int>()
 
-private fun signalOf(wire: String): Int = wireValues.computeIfAbsent(wire) {
+private fun signalOf(wire: String): Int {
+    if (wireValues.contains(wire)) return wireValues.getValue(wire)
+
     val instruction = instructions.getValue(wire)
     val formula = formulas.find { it.matches(instruction) } ?: throw Exception("cannot find formula for $instruction")
 
-    formula.calculate(instruction)
+    return formula.calculate(instruction).also { wireValues[wire] = it }
 }
 
 private class Formula(

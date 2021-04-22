@@ -1,7 +1,7 @@
 package zakhi.aoc2015
 
 import zakhi.flip
-import zakhi.linesOf
+import zakhi.matchEntireTextOf
 import zakhi.pairs
 
 
@@ -25,8 +25,6 @@ fun main() {
     println("The most amount of money spent and lose is ${losingEquipment.sumOf { it.cost }}")
 }
 
-
-private val input = linesOf("aoc2015/day21").toList()
 
 private val weapons = listOf(
     Equipment(cost = 8, damage = 4),
@@ -73,20 +71,15 @@ private fun equipmentSets(): Sequence<List<Equipment>> = sequence {
     }
 }
 
-private fun createBoss() = Fighter(
-    initialHitPoints = findProperty(Regex("""Hit Points: (\d+)""")),
-    damage = findProperty(Regex("""Damage: (\d+)""")),
-    armor = findProperty(Regex("""Armor: (\d+)"""))
-)
+private fun createBoss() = matchEntireTextOf("aoc2015/day21", Regex("""Hit Points: (\d+)\nDamage: (\d+)\nArmor: (\d+)""")) { (hitPoints, damage, armor) ->
+    Fighter(hitPoints.toInt(), damage.toInt(), armor.toInt())
+}
 
 private fun createPlayer(equipments: List<Equipment>) = Fighter(
     initialHitPoints = 100,
     damage = equipments.sumOf { it.damage },
     armor = equipments.sumOf { it.armor }
 )
-
-private fun findProperty(regex: Regex): Int =
-    input.mapNotNull { regex.matchEntire(it)?.groupValues?.get(1)?.toInt() }.first()
 
 private fun winnerOfFightBetween(first: Fighter, second: Fighter): Fighter {
     var fighters = first to second

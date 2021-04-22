@@ -1,12 +1,13 @@
 package zakhi.aoc2015
 
-import zakhi.entireTextOf
+import zakhi.matchEntireTextOf
 import zakhi.naturalNumbers
 
 
 fun main() {
-    val match = Regex("""row (\d+), column (\d+)""").find(entireTextOf("aoc2015/day25")) ?: throw Exception("invalid input")
-    val (row, column) = match.groupValues.drop(1).map { it.toInt() }
+    val (row, column) = matchEntireTextOf("aoc2015/day25", Regex("""row (\d+), column (\d+)""")) { (row, column) ->
+        row.toInt() to column.toInt()
+    }
 
     val rowStart = 1 + naturalNumbers().take(row - 1).sum()
     val cell = rowStart + naturalNumbers(from = row + 1).take(column - 1).sum()
