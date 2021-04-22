@@ -1,5 +1,7 @@
 package zakhi.aoc2015
 
+import zakhi.cyclicNext
+import zakhi.cyclicPrevious
 import zakhi.matchEachLineOf
 import zakhi.permutations
 
@@ -26,8 +28,8 @@ private fun allArrangementsOf(people: List<String>): List<List<String>> {
 
 private fun totalHappinessChange(arrangement: List<String>): Int = arrangement.indices.sumBy { index ->
     val person = arrangement[index]
-    val nextPerson = arrangement[(index + 1) % arrangement.size]
-    val previousPerson = arrangement[(index - 1 + arrangement.size) % arrangement.size] // TODO: use mod() in Kotlin 1.5
+    val nextPerson = arrangement.cyclicNext(index)
+    val previousPerson = arrangement.cyclicPrevious(index)
 
     happinessRules.getValue(person to nextPerson) + happinessRules.getValue(person to previousPerson)
 }

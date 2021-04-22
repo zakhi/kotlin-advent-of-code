@@ -1,5 +1,7 @@
 package zakhi.aoc2015
 
+import kotlin.math.absoluteValue
+
 
 typealias Point = Pair<Int, Int>
 
@@ -12,6 +14,8 @@ fun List<Int>.toPoint(): Point {
 }
 
 operator fun Point.plus(offset: Point) = this.x + offset.x to this.y + offset.y
+
+val Point.gridDistance get() = x.absoluteValue + y.absoluteValue
 
 fun grid(xs: Iterable<Int>, ys: Iterable<Int> = xs): Sequence<Point> = xs.asSequence().flatMap { x ->
     ys.asSequence().map { y -> x to y }

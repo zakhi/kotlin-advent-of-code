@@ -22,5 +22,9 @@ fun <E> List<E>.combinations(groupSize: Int): Sequence<List<E>> = sequence {
     }
 }
 
+// TODO: use mod() in Kotlin 1.5
+
+fun <E> List<E>.cyclicNext(index: Int): E = get((index + 1) % size)
+fun <E> List<E>.cyclicPrevious(index: Int): E = get((index - 1 + size) % size)
 
 fun <T1, T2> Pair<T1, T2>.flip(): Pair<T2, T1> = second to first

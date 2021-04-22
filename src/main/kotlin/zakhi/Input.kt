@@ -10,6 +10,10 @@ fun <T> matchEntireTextOf(fileName: String, regex: Regex, transform: (MatchResul
     return transform(match.destructured)
 }
 
+fun <T> findAllInEntireTextOf(fileName: String, regex: Regex, transform: (MatchResult.Destructured) -> T): List<T> {
+    return regex.findAll(entireTextOf(fileName)).map { transform(it.destructured) }.toList()
+}
+
 fun <T> matchEachLineOf(fileName: String, regex: Regex, transform: (MatchResult.Destructured) -> T): List<T> =
     linesOf(fileName).mapIndexed { index, line ->
         val match = regex.matchEntire(line) ?: throw Exception("line ${index + 1} of $fileName does not match /$regex/")
