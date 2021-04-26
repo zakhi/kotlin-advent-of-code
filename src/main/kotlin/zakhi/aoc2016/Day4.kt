@@ -1,5 +1,6 @@
 package zakhi.aoc2016
 
+import zakhi.join
 import zakhi.matchEachLineOf
 
 
@@ -23,9 +24,9 @@ private class Room(
 ) {
 
     val isReal: Boolean get() =
-        letterCounts.keys.sortedWith(compareByDescending<Char> { letterCounts[it] }.thenBy { it }).take(5).joinToString(separator = "") == checksum
+        letterCounts.keys.sortedWith(compareByDescending<Char> { letterCounts[it] }.thenBy { it }).take(5).join() == checksum
 
-    val decrypted: String get() = name.map { it.rotate(sectorId) }.joinToString(separator = "")
+    val decrypted: String get() = name.map { it.rotate(sectorId) }.join()
 
     private val letterCounts = name.filter { it != '-' }.groupingBy { it }.eachCount()
 }

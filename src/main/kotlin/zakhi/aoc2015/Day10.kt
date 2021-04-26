@@ -1,6 +1,7 @@
 package zakhi.aoc2015
 
 import zakhi.entireTextOf
+import zakhi.join
 
 
 fun main() {
@@ -16,7 +17,5 @@ fun main() {
 
 private fun generateSequences(initialSequence: String, times: Int) =
     (1..times).fold(initialSequence) { currentSequence, _ ->
-        Regex("""(\d)\1*""").findAll(currentSequence).joinToString(separator = "") {
-            "${it.value.length}${it.groupValues[1]}"
-        }
+        Regex("""(\d)\1*""").findAll(currentSequence).join { "${it.value.length}${it.groupValues[1]}" }
     }

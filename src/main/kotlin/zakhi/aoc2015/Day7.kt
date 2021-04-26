@@ -32,7 +32,7 @@ private val formulas = listOf(
 private val wireValues = mutableMapOf<String, Int>()
 
 private fun signalOf(wire: String): Int {
-    if (wireValues.contains(wire)) return wireValues.getValue(wire)
+    if (wire in wireValues) return wireValues.getValue(wire)
 
     val instruction = instructions.getValue(wire)
     val formula = formulas.find { it.matches(instruction) } ?: throw Exception("cannot find formula for $instruction")

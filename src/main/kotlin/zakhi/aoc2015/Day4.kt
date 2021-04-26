@@ -1,9 +1,8 @@
 package zakhi.aoc2015
 
 import zakhi.entireTextOf
+import zakhi.md5Hash
 import zakhi.naturalNumbers
-import java.math.BigInteger
-import java.security.MessageDigest
 
 
 fun main() {
@@ -14,10 +13,4 @@ fun main() {
 
     val firstSixZeroes = naturalNumbers().first { "$key$it".md5Hash().startsWith("000000") }
     println("The first occurrence of 6-zero start is at $firstSixZeroes")
-}
-
-
-private fun String.md5Hash(): String {
-    val md5 = MessageDigest.getInstance("MD5")
-    return BigInteger(1, md5.digest(toByteArray())).toString(16).padStart(32, '0')
 }

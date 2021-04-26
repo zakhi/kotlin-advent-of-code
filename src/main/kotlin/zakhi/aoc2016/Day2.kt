@@ -1,5 +1,6 @@
 package zakhi.aoc2016
 
+import zakhi.join
 import zakhi.linesOf
 
 
@@ -17,8 +18,7 @@ fun main() {
 private class KeyPad {
     private var position = 5
 
-    fun readCode(instructions: List<String>): String =
-        instructions.joinToString(separator = "") { follow(it) }
+    fun readCode(instructions: List<String>): String = instructions.join { follow(it) }
 
     private fun follow(digitInstructions: String): String {
         digitInstructions.forEach { move ->
@@ -43,8 +43,7 @@ private class ComplexKeyPad {
     private val leftMoves = mapOf("6" to "5", "3" to "2", "7" to "6", "B" to "A", "4" to "3", "8" to "7", "C" to "B", "9" to "8")
     private val rightMoves = leftMoves.map { it.value to it.key }.toMap()
 
-    fun readCode(instructions: List<String>): String =
-        instructions.joinToString(separator = "") { follow(it) }
+    fun readCode(instructions: List<String>): String = instructions.join { follow(it) }
 
     private fun follow(digitInstructions: String): String {
         digitInstructions.forEach { move ->
