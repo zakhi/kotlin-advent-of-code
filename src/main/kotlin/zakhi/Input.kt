@@ -1,5 +1,7 @@
 package zakhi
 
+import zakhi.Regexes.mapDestructured
+
 
 fun entireTextOf(fileName: String): String = findResource(fileName).readText()
 
@@ -11,14 +13,12 @@ fun <T> matchEntireTextOf(fileName: String, regex: Regex, transform: (MatchResul
 }
 
 fun <T> findAllInEntireTextOf(fileName: String, regex: Regex, transform: (MatchResult.Destructured) -> T): List<T> {
-    return regex.findAll(entireTextOf(fileName)).map { transform(it.destructured) }.toList()
+    return regex.findAll(entireTextOf(fileName)).mapDestructured(transform)
 }
 
 fun <T> matchEachLineOf(fileName: String, regex: Regex, transform: (MatchResult.Destructured) -> T): List<T> =
     linesOf(fileName).mapIndexed { index, line ->
-        val match = regex.matchEntire(line) ?: throw Exception("line ${index + 1} of $fileName does not match /$regex/")
-        transform(match.destructured)
-    }.toList()
-
+        regex.matchEntire(line) ?: throw Exception("line ${index + 1} of $fileName does not match /$regex/")
+    }.mapDestructured(transform)
 
 private fun findResource(fileName: String) = object {}::class.java.getResource("/zakhi/$fileName") ?: throw Exception("Could not find resource $fileName")
