@@ -1,4 +1,4 @@
-package zakhi.aoc2015
+package zakhi
 
 import kotlin.math.absoluteValue
 

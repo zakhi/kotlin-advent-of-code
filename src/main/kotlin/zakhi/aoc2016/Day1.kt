@@ -1,8 +1,8 @@
 package zakhi.aoc2016
 
-import zakhi.aoc2015.Point
-import zakhi.aoc2015.gridDistance
-import zakhi.aoc2015.plus
+import zakhi.Point
+import zakhi.gridDistance
+import zakhi.plus
 import zakhi.cyclicNext
 import zakhi.cyclicPrevious
 import zakhi.findAllInEntireTextOf

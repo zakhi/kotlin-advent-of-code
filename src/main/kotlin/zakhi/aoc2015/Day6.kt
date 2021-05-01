@@ -1,7 +1,7 @@
 package zakhi.aoc2015
 
+import zakhi.*
 import zakhi.aoc2015.Operation.*
-import zakhi.matchEachLineOf
 
 
 fun main() {

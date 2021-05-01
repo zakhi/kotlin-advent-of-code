@@ -1,6 +1,6 @@
 package zakhi.aoc2015
 
-import zakhi.linesOf
+import zakhi.*
 
 
 fun main() {
