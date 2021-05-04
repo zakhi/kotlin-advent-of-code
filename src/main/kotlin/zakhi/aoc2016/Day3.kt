@@ -1,6 +1,6 @@
 package zakhi.aoc2016
 
-import zakhi.matchEachLineOf
+import zakhi.input.matchEachLineOf
 
 
 fun main() {

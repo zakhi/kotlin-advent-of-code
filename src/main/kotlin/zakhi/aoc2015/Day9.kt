@@ -1,7 +1,7 @@
 package zakhi.aoc2015
 
-import zakhi.matchEachLineOf
-import zakhi.permutations
+import zakhi.collections.permutations
+import zakhi.input.matchEachLineOf
 
 
 fun main() {

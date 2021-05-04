@@ -1,9 +1,9 @@
 package zakhi.aoc2015
 
 import zakhi.Point
-import zakhi.entireTextOf
-import zakhi.isOdd
-import zakhi.plus
+import zakhi.input.entireTextOf
+import zakhi.numbers.isOdd
+import zakhi.points.plus
 
 
 fun main() {

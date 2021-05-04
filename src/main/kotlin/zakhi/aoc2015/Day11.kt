@@ -1,6 +1,6 @@
 package zakhi.aoc2015
 
-import zakhi.entireTextOf
+import zakhi.input.entireTextOf
 
 
 fun main() {

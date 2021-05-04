@@ -1,7 +1,7 @@
 package zakhi.aoc2016
 
-import zakhi.Regexes.mapDestructured
-import zakhi.linesOf
+import zakhi.input.linesOf
+import zakhi.regex.mapDestructured
 
 
 fun main() {

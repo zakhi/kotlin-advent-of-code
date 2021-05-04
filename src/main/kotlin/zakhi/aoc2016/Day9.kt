@@ -1,6 +1,6 @@
 package zakhi.aoc2016
 
-import zakhi.entireTextOf
+import zakhi.input.entireTextOf
 
 fun main() {
     val compressed = entireTextOf("aoc2016/day9").replace(Regex("""\s+"""), "")

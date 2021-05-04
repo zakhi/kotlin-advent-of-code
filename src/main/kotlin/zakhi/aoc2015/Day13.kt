@@ -1,9 +1,9 @@
 package zakhi.aoc2015
 
-import zakhi.cyclicNext
-import zakhi.cyclicPrevious
-import zakhi.matchEachLineOf
-import zakhi.permutations
+import zakhi.collections.cyclicNext
+import zakhi.collections.cyclicPrevious
+import zakhi.collections.permutations
+import zakhi.input.matchEachLineOf
 
 
 fun main() {

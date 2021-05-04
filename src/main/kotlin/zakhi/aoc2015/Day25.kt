@@ -1,7 +1,7 @@
 package zakhi.aoc2015
 
-import zakhi.matchEntireTextOf
-import zakhi.naturalNumbers
+import zakhi.input.matchEntireTextOf
+import zakhi.numbers.naturalNumbers
 
 
 fun main() {

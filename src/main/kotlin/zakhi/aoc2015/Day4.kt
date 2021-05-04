@@ -1,8 +1,8 @@
 package zakhi.aoc2015
 
-import zakhi.entireTextOf
-import zakhi.md5Hash
-import zakhi.naturalNumbers
+import zakhi.input.entireTextOf
+import zakhi.numbers.naturalNumbers
+import zakhi.strings.md5Hash
 
 
 fun main() {

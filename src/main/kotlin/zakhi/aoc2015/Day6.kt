@@ -1,7 +1,12 @@
 package zakhi.aoc2015
 
-import zakhi.*
+import zakhi.Point
 import zakhi.aoc2015.Operation.*
+import zakhi.input.matchEachLineOf
+import zakhi.points.grid
+import zakhi.points.toPoint
+import zakhi.points.x
+import zakhi.points.y
 
 
 fun main() {

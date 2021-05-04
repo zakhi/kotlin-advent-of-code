@@ -1,7 +1,7 @@
 package zakhi.aoc2015
 
-import zakhi.entireTextOf
-import zakhi.join
+import zakhi.input.entireTextOf
+import zakhi.strings.join
 
 
 fun main() {

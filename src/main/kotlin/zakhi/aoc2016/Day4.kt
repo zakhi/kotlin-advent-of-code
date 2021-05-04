@@ -1,7 +1,7 @@
 package zakhi.aoc2016
 
-import zakhi.join
-import zakhi.matchEachLineOf
+import zakhi.input.matchEachLineOf
+import zakhi.strings.join
 
 
 fun main() {

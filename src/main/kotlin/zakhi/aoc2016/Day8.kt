@@ -1,6 +1,10 @@
 package zakhi.aoc2016
 
-import zakhi.*
+import zakhi.Point
+import zakhi.input.linesOf
+import zakhi.points.grid
+import zakhi.points.x
+import zakhi.points.y
 
 
 fun main() {
