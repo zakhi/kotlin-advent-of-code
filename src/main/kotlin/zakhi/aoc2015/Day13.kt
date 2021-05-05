@@ -26,7 +26,7 @@ private fun allArrangementsOf(people: List<String>): List<List<String>> {
     return people.drop(1).permutations().map { it + people.first() }
 }
 
-private fun totalHappinessChange(arrangement: List<String>): Int = arrangement.indices.sumBy { index ->
+private fun totalHappinessChange(arrangement: List<String>): Int = arrangement.indices.sumOf { index ->
     val person = arrangement[index]
     val nextPerson = arrangement.cyclicNext(index)
     val previousPerson = arrangement.cyclicPrevious(index)

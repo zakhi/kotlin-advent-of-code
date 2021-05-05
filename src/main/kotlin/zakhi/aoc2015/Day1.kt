@@ -11,7 +11,7 @@ fun main() {
 
 private val input by lazy { entireTextOf("aoc2015/day1") }
 
-private val destinationFloor: Int get() = input.sumBy(::floorOffset)
+private val destinationFloor: Int get() = input.sumOf(::floorOffset)
 
 private val basementEntryPosition: Int get() {
     var currentFloor = 0

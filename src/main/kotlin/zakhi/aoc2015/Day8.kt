@@ -6,11 +6,11 @@ import zakhi.input.linesOf
 fun main() {
     val strings = linesOf("aoc2015/day8").toList()
 
-    val totalCharacters = strings.sumBy { it.length }
-    val inMemoryCharacters = strings.sumBy { it.memorySize }
+    val totalCharacters = strings.sumOf { it.length }
+    val inMemoryCharacters = strings.sumOf { it.memorySize }
     println("Character difference is ${totalCharacters - inMemoryCharacters}")
 
-    val encodedCharacters = strings.sumBy { it.encodedSize }
+    val encodedCharacters = strings.sumOf { it.encodedSize }
     println("Encoded character difference is ${encodedCharacters - totalCharacters}")
 }
 

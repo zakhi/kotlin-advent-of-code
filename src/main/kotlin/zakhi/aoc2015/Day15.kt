@@ -34,7 +34,7 @@ private val Map<Ingredient, Int>.totalScore: Int get() =
 private val Map<Ingredient, Int>.totalCalories: Int get() = totalScoreOf { calories }
 
 private fun Map<Ingredient, Int>.totalScoreOf(property: Ingredient.() -> Int): Int =
-    maxOf(0, entries.sumBy { (ingredient, amount) -> property(ingredient) * amount })
+    maxOf(0, entries.sumOf { (ingredient, amount) -> property(ingredient) * amount })
 
 private data class Ingredient(
     val capacity: Int,

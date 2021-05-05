@@ -9,7 +9,7 @@ fun main() {
         Room(name, sectorId.toInt(), checksum)
     }
 
-    val realRoomSectorIdSum = rooms.filter { it.isReal }.sumBy { it.sectorId }
+    val realRoomSectorIdSum = rooms.filter { it.isReal }.sumOf { it.sectorId }
     println("The sum of the sector IDs of the real rooms is $realRoomSectorIdSum")
 
     val northPoleObjectStorageRoom = rooms.first { it.decrypted == "northpole object storage" }

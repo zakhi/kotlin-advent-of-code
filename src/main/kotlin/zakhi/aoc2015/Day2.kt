@@ -10,10 +10,10 @@ fun main() {
         Present(groups.toList().map { it.toInt() })
     }
 
-    val totalWrappingPaper = presents.sumBy { it.wrappingPaperSize }
+    val totalWrappingPaper = presents.sumOf { it.wrappingPaperSize }
     println("Total wrapping paper needed is $totalWrappingPaper square feet")
 
-    val totalRibbonLength = presents.sumBy { it.ribbonLength }
+    val totalRibbonLength = presents.sumOf { it.ribbonLength }
     println("Total ribbon needed is $totalRibbonLength feet")
 }
 
