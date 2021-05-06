@@ -22,8 +22,8 @@ fun smallestFirstGroupOf(packages: List<Long>, numberOfGroups: Int): List<Long>?
 
     val requiredSum = packages.sum() / numberOfGroups
 
-    return (1..packages.size).asSequence().mapNotNull { groupSize -> // TODO: change to firstNotNullOfOrNull() in Kotlin 1.5
+    return (1..packages.size).asSequence().firstNotNullOfOrNull { groupSize ->
         val candidates = packages.combinations(groupSize).filter { it.sum() == requiredSum }.sortedBy { it.product() }
         candidates.filter { group -> smallestFirstGroupOf(packages - group, numberOfGroups - 1) != null }.firstOrNull()
-    }.firstOrNull()
+    }
 }

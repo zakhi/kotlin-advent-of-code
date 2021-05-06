@@ -1,7 +1,7 @@
 package zakhi.aoc2015
 
 import zakhi.input.matchEntireTextOf
-import zakhi.numbers.naturalNumbers
+import zakhi.numbers.wholeNumbers
 
 
 fun main() {
@@ -9,8 +9,8 @@ fun main() {
         row.toInt() to column.toInt()
     }
 
-    val rowStart = 1 + naturalNumbers().take(row - 1).sum()
-    val cell = rowStart + naturalNumbers(from = row + 1).take(column - 1).sum()
+    val rowStart = 1 + wholeNumbers().take(row - 1).sum()
+    val cell = rowStart + wholeNumbers(from = row + 1).take(column - 1).sum()
 
     val modulo = 33554393
     val code = 20151125L * 252533L.pow(cell - 1, modulo) % modulo

@@ -1,8 +1,8 @@
 package zakhi.aoc2016
 
 import zakhi.Point
-import zakhi.collections.cyclicNext
-import zakhi.collections.cyclicPrevious
+import zakhi.collections.cyclicNextFrom
+import zakhi.collections.cyclicPreviousFrom
 import zakhi.input.findAllInEntireTextOf
 import zakhi.points.gridDistance
 import zakhi.points.plus
@@ -30,8 +30,8 @@ private class Route {
 
     fun move(turn: String, blocks: Int) {
         direction = when (turn) {
-            "R" -> directions.cyclicNext(directions.indexOf(direction))
-            "L" -> directions.cyclicPrevious(directions.indexOf(direction))
+            "R" -> directions.cyclicNextFrom(directions.indexOf(direction))
+            "L" -> directions.cyclicPreviousFrom(directions.indexOf(direction))
             else -> throw Exception("Invalid turn $turn")
         }
 

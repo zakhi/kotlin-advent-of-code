@@ -6,7 +6,7 @@ import kotlin.math.sqrt
 @Suppress("ClassName")
 object numbers {
 
-    fun naturalNumbers(from: Int = 1): Sequence<Int> = generateSequence(from) { it + 1 }
+    fun wholeNumbers(from: Int = 1): Sequence<Int> = generateSequence(from) { it + 1 }
 
 
     fun Int.divisors(): Sequence<Int> = sequence {

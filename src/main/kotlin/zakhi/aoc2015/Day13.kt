@@ -1,7 +1,7 @@
 package zakhi.aoc2015
 
-import zakhi.collections.cyclicNext
-import zakhi.collections.cyclicPrevious
+import zakhi.collections.cyclicNextFrom
+import zakhi.collections.cyclicPreviousFrom
 import zakhi.collections.permutations
 import zakhi.input.matchEachLineOf
 
@@ -28,8 +28,8 @@ private fun allArrangementsOf(people: List<String>): List<List<String>> {
 
 private fun totalHappinessChange(arrangement: List<String>): Int = arrangement.indices.sumOf { index ->
     val person = arrangement[index]
-    val nextPerson = arrangement.cyclicNext(index)
-    val previousPerson = arrangement.cyclicPrevious(index)
+    val nextPerson = arrangement.cyclicNextFrom(index)
+    val previousPerson = arrangement.cyclicPreviousFrom(index)
 
     happinessRules.getValue(person to nextPerson) + happinessRules.getValue(person to previousPerson)
 }
