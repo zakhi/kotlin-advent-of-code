@@ -13,7 +13,7 @@ object collections {
     fun <E> List<E>.pairs(): Sequence<Pair<E, E>> = combinations(2).map { it[0] to it[1] }
 
     fun <E> List<E>.combinations(groupSize: Int): Sequence<List<E>> = sequence {
-        check(groupSize in 1..size)
+        if (groupSize !in 1..size) return@sequence
 
         slice(0..size - groupSize).mapIndexed { index, element ->
             if (groupSize == 1) {
@@ -21,6 +21,14 @@ object collections {
             } else {
                 val subCombinations = subList(index + 1, size).combinations(groupSize - 1)
                 subCombinations.forEach { yield(listOf(element) + it) }
+            }
+        }
+    }
+
+    fun <T, U> List<T>.product(other: List<U>) = sequence {
+        for (first in iterator()) {
+            for (second in other) {
+                yield(first to second)
             }
         }
     }
