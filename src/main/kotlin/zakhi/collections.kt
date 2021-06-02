@@ -36,5 +36,7 @@ object collections {
     fun <E> List<E>.cyclicNextFrom(index: Int): E = get((index + 1).mod(size))
     fun <E> List<E>.cyclicPreviousFrom(index: Int): E = get((index - 1).mod(size))
 
+    fun <E> List<E>.second() = get(1)
+
     fun <T1, T2> Pair<T1, T2>.flip(): Pair<T2, T1> = second to first
 }
