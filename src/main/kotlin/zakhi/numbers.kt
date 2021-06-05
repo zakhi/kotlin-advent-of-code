@@ -27,8 +27,8 @@ object numbers {
     fun Int.floorSqrt(): Int = sqrt(toDouble()).toInt()
 
     val Int.isOdd get() = this % 2 != 0
+    val Int.isEven get() = this % 2 == 0
 
     fun Iterable<Int>.product(): Int = reduce(Math::multiplyExact)
     fun Iterable<Long>.product(): Long = reduce(Math::multiplyExact)
 }
-
