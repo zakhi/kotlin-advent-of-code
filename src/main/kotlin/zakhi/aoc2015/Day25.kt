@@ -1,7 +1,7 @@
 package zakhi.aoc2015
 
-import zakhi.input.matchEntireTextOf
-import zakhi.numbers.wholeNumbers
+import zakhi.helpers.matchEntireTextOf
+import zakhi.helpers.wholeNumbers
 
 
 fun main() {

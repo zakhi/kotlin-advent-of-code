@@ -1,11 +1,11 @@
 package zakhi.aoc2016
 
-import zakhi.Point
-import zakhi.collections.cyclicNextFrom
-import zakhi.collections.cyclicPreviousFrom
-import zakhi.input.findAllInEntireTextOf
-import zakhi.points.gridDistance
-import zakhi.points.plus
+import zakhi.helpers.Point
+import zakhi.helpers.cyclicNextFrom
+import zakhi.helpers.cyclicPreviousFrom
+import zakhi.helpers.findAllInEntireTextOf
+import zakhi.helpers.gridDistance
+import zakhi.helpers.plus
 
 
 fun main() {

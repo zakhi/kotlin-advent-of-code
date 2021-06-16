@@ -1,11 +1,11 @@
 package zakhi.aoc2016
 
-import zakhi.Point
-import zakhi.input.entireTextOf
-import zakhi.points.plus
-import zakhi.points.x
-import zakhi.points.y
-import zakhi.strings.md5Hash
+import zakhi.helpers.Point
+import zakhi.helpers.entireTextOf
+import zakhi.helpers.plus
+import zakhi.helpers.x
+import zakhi.helpers.y
+import zakhi.helpers.md5Hash
 
 
 fun main() {

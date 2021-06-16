@@ -1,7 +1,7 @@
 package zakhi.aoc2015
 
 import kotlinx.serialization.json.*
-import zakhi.input.entireTextOf
+import zakhi.helpers.entireTextOf
 
 
 fun main() {

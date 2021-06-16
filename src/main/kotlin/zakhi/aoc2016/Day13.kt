@@ -1,16 +1,10 @@
 package zakhi.aoc2016
 
-import zakhi.Point
-import zakhi.input
-import zakhi.minHeapOf
-import zakhi.numbers.isEven
-import zakhi.points.plus
-import zakhi.points.x
-import zakhi.points.y
+import zakhi.helpers.*
 
 
 fun main() {
-    val officeDesignerNumber = input.entireTextOf("aoc2016/day13").trim().toInt()
+    val officeDesignerNumber = entireTextOf("aoc2016/day13").trim().toInt()
     val maze = Maze(officeDesignerNumber)
 
     println("The fewest number of steps is ${maze.shortestRouteTo(31 to 39)}")

@@ -1,8 +1,8 @@
 package zakhi.aoc2015
 
-import zakhi.collections.flip
-import zakhi.collections.pairs
-import zakhi.input.matchEntireTextOf
+import zakhi.helpers.flip
+import zakhi.helpers.pairs
+import zakhi.helpers.matchEntireTextOf
 
 
 fun main() {

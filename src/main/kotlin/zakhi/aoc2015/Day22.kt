@@ -1,6 +1,6 @@
 package zakhi.aoc2015
 
-import zakhi.input.matchEntireTextOf
+import zakhi.helpers.matchEntireTextOf
 
 
 fun main() {

@@ -1,9 +1,9 @@
 package zakhi.aoc2015
 
-import zakhi.input.entireTextOf
-import zakhi.numbers.divisors
-import zakhi.numbers.floorSqrt
-import zakhi.numbers.wholeNumbers
+import zakhi.helpers.entireTextOf
+import zakhi.helpers.divisors
+import zakhi.helpers.floorSqrt
+import zakhi.helpers.wholeNumbers
 
 
 fun main() {

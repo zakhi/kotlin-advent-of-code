@@ -1,8 +1,8 @@
 package zakhi.aoc2016
 
-import zakhi.input.entireTextOf
-import zakhi.regex.mapDestructured
-import zakhi.strings.md5Hash
+import zakhi.helpers.entireTextOf
+import zakhi.helpers.mapDestructured
+import zakhi.helpers.md5Hash
 
 
 fun main() {

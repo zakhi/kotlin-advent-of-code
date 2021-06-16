@@ -1,8 +1,8 @@
 package zakhi.aoc2015
 
-import zakhi.collections.combinations
-import zakhi.input.linesOf
-import zakhi.numbers.product
+import zakhi.helpers.combinations
+import zakhi.helpers.linesOf
+import zakhi.helpers.product
 
 
 fun main() {

@@ -1,8 +1,8 @@
 package zakhi.aoc2015
 
-import zakhi.input.entireTextOf
-import zakhi.numbers.wholeNumbers
-import zakhi.strings.md5Hash
+import zakhi.helpers.entireTextOf
+import zakhi.helpers.wholeNumbers
+import zakhi.helpers.md5Hash
 
 
 fun main() {

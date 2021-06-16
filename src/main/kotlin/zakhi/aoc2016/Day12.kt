@@ -1,11 +1,11 @@
 package zakhi.aoc2016
 
-import zakhi.collections.second
-import zakhi.input
+import zakhi.helpers.matchEachLineOf
+import zakhi.helpers.second
 
 
 fun main() {
-    val instructions = input.matchEachLineOf("aoc2016/day12", Regex("""(\w+) (\w+) ?(-?\w+)?""")) { values ->
+    val instructions = matchEachLineOf("aoc2016/day12", Regex("""(\w+) (\w+) ?(-?\w+)?""")) { values ->
         Instruction(values.toList().first(), values.toList().filter { it.isNotEmpty() }.drop(1))
     }
 

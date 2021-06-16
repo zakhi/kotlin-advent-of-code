@@ -2,11 +2,11 @@ package zakhi.aoc2016
 
 import zakhi.aoc2016.ComponentType.GENERATOR
 import zakhi.aoc2016.ComponentType.MICROCHIP
-import zakhi.collections.combinations
-import zakhi.collections.product
-import zakhi.input.linesOf
-import zakhi.minHeapOf
-import zakhi.regex.mapDestructured
+import zakhi.helpers.combinations
+import zakhi.helpers.product
+import zakhi.helpers.linesOf
+import zakhi.helpers.minHeapOf
+import zakhi.helpers.mapDestructured
 
 
 fun main() {

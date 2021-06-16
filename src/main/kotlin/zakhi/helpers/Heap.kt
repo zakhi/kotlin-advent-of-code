@@ -1,4 +1,4 @@
-package zakhi
+package zakhi.helpers
 
 
 interface Heap<T : Any> {
