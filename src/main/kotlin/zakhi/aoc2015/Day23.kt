@@ -1,6 +1,7 @@
 package zakhi.aoc2015
 
 import zakhi.helpers.linesOf
+import zakhi.helpers.tryMatch
 
 
 fun main() {
@@ -35,25 +36,15 @@ private class Computer(
     private fun perform(instruction: String) {
         val currentPosition = position
 
-        for ((pattern, operation) in instructionPatterns) {
-            val match = pattern.matchEntire(instruction)
+        tryMatch<Unit>(instruction) {
+            Regex("""hlf (\w)""") to { (r) -> registers[r] = registers.getValue(r) / 2 }
+            Regex("""tpl (\w)""") to { (r) -> registers[r] = registers.getValue(r) * 3 }
+            Regex("""inc (\w)""") to { (r) -> registers[r] = registers.getValue(r) + 1 }
+            Regex("""jmp ([+-]?\d+)""") to { (offset) -> position += offset.toInt() }
+            Regex("""jie (\w), ([+-]?\d+)""") to { (r, offset) -> if (registers.getValue(r) % 2 == 0) position += offset.toInt() }
+            Regex("""jio (\w), ([+-]?\d+)""") to { (r, offset) -> if (registers.getValue(r) == 1) position += offset.toInt() }
+        } ?: throw Exception("Unknown instruction $instruction")
 
-            if (match != null) {
-                operation(match.destructured)
-                if (currentPosition == position) position += 1
-                return
-            }
-        }
-
-        throw Exception("Unknown instruction $instruction")
+        if (currentPosition == position) position += 1
     }
-
-    private val instructionPatterns = mapOf<Regex, (MatchResult.Destructured) -> Unit>(
-        Regex("""hlf (\w)""") to { (r: String) -> registers[r] = registers.getValue(r) / 2 },
-        Regex("""tpl (\w)""") to { (r: String) -> registers[r] = registers.getValue(r) * 3 },
-        Regex("""inc (\w)""") to { (r: String) -> registers[r] = registers.getValue(r) + 1 },
-        Regex("""jmp ([+-]?\d+)""") to { (offset: String) -> position += offset.toInt() },
-        Regex("""jie (\w), ([+-]?\d+)""") to { (r: String, offset: String) -> if (registers.getValue(r) % 2 == 0) position += offset.toInt() },
-        Regex("""jio (\w), ([+-]?\d+)""") to { (r: String, offset: String) -> if (registers.getValue(r) == 1) position += offset.toInt() },
-    )
 }

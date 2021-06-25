@@ -1,6 +1,7 @@
 package zakhi.aoc2015
 
 import zakhi.helpers.matchEachLineOf
+import zakhi.helpers.tryMatch
 
 
 fun main() {
@@ -18,37 +19,24 @@ private val instructions = matchEachLineOf("aoc2015/day7", Regex("""(.*) -> (\w+
     targetWire to instruction
 }.toMap()
 
-private val formulas = listOf(
-    Formula(Regex("""(\d+)""")) { (number) -> number.toInt() },
-    Formula(Regex("""(\w+)""")) { (wire) -> signalOf(wire) },
-    Formula(Regex("""(\d+) AND (\w+)""")) { (number, wire) -> number.toInt() and signalOf(wire) },
-    Formula(Regex("""(\w+) AND (\w+)""")) { (a, b) -> signalOf(a) and signalOf(b) },
-    Formula(Regex("""(\w+) OR (\w+)""")) { (a, b) -> signalOf(a) or signalOf(b) },
-    Formula(Regex("""NOT (\w+)""")) { (wire) -> signalOf(wire).inv() },
-    Formula(Regex("""(\w+) LSHIFT (\d+)""")) { (wire, number) -> signalOf(wire) shl number.toInt() },
-    Formula(Regex("""(\w+) RSHIFT (\d+)""")) { (wire, number) -> signalOf(wire) shr number.toInt() },
-)
-
 private val wireValues = mutableMapOf<String, Int>()
 
 private fun signalOf(wire: String): Int {
     if (wire in wireValues) return wireValues.getValue(wire)
 
     val instruction = instructions.getValue(wire)
-    val formula = formulas.find { it.matches(instruction) } ?: throw Exception("cannot find formula for $instruction")
 
-    return formula.calculate(instruction).also { wireValues[wire] = it }
-}
+    val value = tryMatch<Int>(instruction) {
+        Regex("""(\d+)""") to { (number) -> number.toInt() }
+        Regex("""(\w+)""") to { (wire) -> signalOf(wire) }
+        Regex("""(\d+) AND (\w+)""") to { (number, wire) -> number.toInt() and signalOf(wire) }
+        Regex("""(\w+) AND (\w+)""") to { (a, b) -> signalOf(a) and signalOf(b) }
+        Regex("""(\w+) OR (\w+)""") to { (a, b) -> signalOf(a) or signalOf(b) }
+        Regex("""NOT (\w+)""") to { (wire) -> signalOf(wire).inv() }
+        Regex("""(\w+) LSHIFT (\d+)""") to { (wire, number) -> signalOf(wire) shl number.toInt() }
+        Regex("""(\w+) RSHIFT (\d+)""") to { (wire, number) -> signalOf(wire) shr number.toInt() }
+    } ?: throw Exception("cannot find formula for $instruction")
 
-private class Formula(
-    private val regex: Regex,
-    private val calculation: (MatchResult.Destructured) -> Int
-) {
-
-    fun matches(instruction: String): Boolean = regex.matches(instruction)
-
-    fun calculate(instruction: String): Int {
-        val match = regex.matchEntire(instruction) ?: throw Exception("formula '$instruction' does not match /$regex/")
-        return calculation(match.destructured)
-    }
+    wireValues[wire] = value
+    return value
 }
