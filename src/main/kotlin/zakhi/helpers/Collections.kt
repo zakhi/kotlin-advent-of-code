@@ -9,6 +9,8 @@ fun <E> List<E>.permutations(): List<List<E>> {
 
 fun <E> List<E>.pairs(): Sequence<Pair<E, E>> = combinations(2).map { it[0] to it[1] }
 
+fun <E> List<E>.orderedPairs(): Sequence<Pair<E, E>> = product(this).filterNot { (a, b) -> a == b }
+
 fun <E> List<E>.combinations(groupSize: Int): Sequence<List<E>> = sequence {
     if (groupSize !in 1..size) return@sequence
 

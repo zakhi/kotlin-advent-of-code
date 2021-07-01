@@ -33,9 +33,8 @@ private class Maze(private val officeDesignerNumber: Int) {
 
     fun locationsReachableIn(steps: Int): Int = visited.count { it.value <= steps }
 
-    private fun openSpacesNextTo(position: Point): Sequence<Point> =
-        sequenceOf(0 to 1, 1 to 0, 0 to -1, -1 to 0)
-            .map { (position + it) }
+    private fun openSpacesNextTo(position: Point): List<Point> =
+        position.adjacentNeighbors
             .filter { it.x >= 0 && it.y >= 0 }
             .filter { it.isOpenSpace }
 

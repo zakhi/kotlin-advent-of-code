@@ -21,3 +21,6 @@ val Point.gridDistance get() = x.absoluteValue + y.absoluteValue
 fun grid(xs: Iterable<Int>, ys: Iterable<Int> = xs): Sequence<Point> = xs.asSequence().flatMap { x ->
     ys.asSequence().map { y -> x to y }
 }
+
+val Point.adjacentNeighbors: List<Point>
+    get() = listOf(1 to 0, 0 to 1, -1 to 0, 0 to -1).map { this + it }

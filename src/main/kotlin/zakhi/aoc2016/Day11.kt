@@ -2,11 +2,7 @@ package zakhi.aoc2016
 
 import zakhi.aoc2016.ComponentType.GENERATOR
 import zakhi.aoc2016.ComponentType.MICROCHIP
-import zakhi.helpers.combinations
-import zakhi.helpers.product
-import zakhi.helpers.linesOf
-import zakhi.helpers.minHeapOf
-import zakhi.helpers.mapDestructured
+import zakhi.helpers.*
 
 
 fun main() {
@@ -35,21 +31,11 @@ fun main() {
 }
 
 
-private fun minimalStepsToTarget(state: FloorState): Int {
-    val visited = mutableSetOf<FloorState>()
-    val heap = minHeapOf(state to 0)
-
-    while (true) {
-        val (currentState, distance) = heap.remove()
-        if (currentState.isFinal) return distance
-
-        visited.add(currentState)
-
-        currentState.nextPossibleStates().filterNot { it in visited }.forEach {
-            heap[it] = minOf(heap[it], distance + 1)
-        }
-    }
-}
+private fun minimalStepsToTarget(state: FloorState): Int = minimalDistance(
+    start = state,
+    isTarget = { it.isFinal },
+    neighbors = { it.nextPossibleStates().withDefaultDistance() }
+)
 
 private data class FloorState(
     private val floors: List<Floor>,
