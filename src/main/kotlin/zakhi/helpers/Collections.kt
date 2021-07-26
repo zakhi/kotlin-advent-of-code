@@ -24,7 +24,7 @@ fun <E> List<E>.combinations(groupSize: Int): Sequence<List<E>> = sequence {
     }
 }
 
-fun <T, U> List<T>.product(other: List<U>) = sequence {
+fun <T, U> List<T>.product(other: List<U>): Sequence<Pair<T, U>> = sequence {
     for (first in iterator()) {
         for (second in other) {
             yield(first to second)
