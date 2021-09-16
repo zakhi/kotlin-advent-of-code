@@ -6,7 +6,6 @@ fun <E> List<E>.permutations(): List<List<E>> {
     return flatMap { element -> (this - element).permutations().map { it + element } }
 }
 
-
 fun <E> List<E>.pairs(): Sequence<Pair<E, E>> = combinations(2).map { it[0] to it[1] }
 
 fun <E> List<E>.orderedPairs(): Sequence<Pair<E, E>> = product(this).filterNot { (a, b) -> a == b }
