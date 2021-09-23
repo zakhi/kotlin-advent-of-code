@@ -3,7 +3,7 @@ package zakhi.helpers
 
 fun entireTextOf(fileName: String): String = findResource(fileName).readText()
 
-fun linesOf(fileName: String): Sequence<String> = findResource(fileName).readText().trim().lineSequence()
+fun linesOf(fileName: String): Sequence<String> = findResource(fileName).readText().trimEnd().lineSequence()
 
 fun <T> matchEntireTextOf(fileName: String, regex: Regex, transform: (MatchResult.Destructured) -> T): T {
     val match = regex.find(entireTextOf(fileName)) ?: throw Exception("text of $fileName does not match /$regex/")

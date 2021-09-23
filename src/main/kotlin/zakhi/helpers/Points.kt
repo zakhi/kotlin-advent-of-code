@@ -9,6 +9,9 @@ typealias Point = Pair<Int, Int>
 val Point.x get() = first
 val Point.y get() = second
 
+val Point.column get() = x
+val Point.row get() = y
+
 fun List<Int>.toPoint(): Point {
     check(size == 2)
     return get(0) to get(1)
