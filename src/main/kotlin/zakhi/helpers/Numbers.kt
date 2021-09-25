@@ -20,6 +20,7 @@ fun Int.divisors(): Sequence<Int> = sequence {
 }.sorted()
 
 fun Int.floorSqrt(): Int = sqrt(toDouble()).toInt()
+fun Long.floorSqrt(): Long = sqrt(toDouble()).toLong()
 
 val Int.isOdd get() = this % 2 != 0
 val Int.isEven get() = this % 2 == 0
