@@ -17,7 +17,7 @@ fun main() {
     println("The number of valid pairs is $validPairs")
 
     val nodesByPosition = nodes.associateBy { it.position }
-    val bucketNode = nodes.maxByOrNull { it.available } ?: throw Exception("cannot find bucket node")
+    val bucketNode = nodes.maxBy { it.available }
     val distanceToSource = nodes.maxOf { it.position.x }
     val goalNode = nodesByPosition.getValue(distanceToSource to 0)
 
