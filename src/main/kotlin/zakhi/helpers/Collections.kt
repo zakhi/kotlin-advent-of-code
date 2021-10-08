@@ -39,4 +39,4 @@ fun <E> List<E>.second() = get(1)
 fun <T1, T2> Pair<T1, T2>.flip(): Pair<T2, T1> = second to first
 
 inline fun <T, R : Comparable<R>> Iterable<T>.maxBy(selector: (T) -> R) = maxByOrNull(selector) ?: throw NoSuchElementException()
-inline fun <T, R : Comparable<R>> Iterable<T>.minBy(selector: (T) -> R) = maxByOrNull(selector) ?: throw NoSuchElementException()
+inline fun <T, R : Comparable<R>> Iterable<T>.minBy(selector: (T) -> R) = minByOrNull(selector) ?: throw NoSuchElementException()
