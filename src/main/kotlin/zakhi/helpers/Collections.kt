@@ -43,3 +43,6 @@ inline fun <T, R : Comparable<R>> Sequence<T>.maxBy(selector: (T) -> R) = maxByO
 
 inline fun <T, R : Comparable<R>> Iterable<T>.minBy(selector: (T) -> R) = minByOrNull(selector) ?: throw NoSuchElementException()
 inline fun <T, R : Comparable<R>> Sequence<T>.minBy(selector: (T) -> R) = minByOrNull(selector) ?: throw NoSuchElementException()
+
+fun <T : Comparable<T>> Iterable<T>.max(): T = maxOrNull() ?: throw NoSuchElementException()
+fun <T : Comparable<T>> Iterable<T>.min(): T = minOrNull() ?: throw NoSuchElementException()

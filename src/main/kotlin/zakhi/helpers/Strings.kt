@@ -17,3 +17,5 @@ fun <T> Sequence<T>.join(transform: ((T) -> CharSequence)? = null): String =
 
 fun <T> Iterable<T>.join(transform: ((T) -> CharSequence)? = null): String =
     joinToString(separator = "", transform = transform)
+
+fun String.charList(): List<Char> = toCharArray().toList()
