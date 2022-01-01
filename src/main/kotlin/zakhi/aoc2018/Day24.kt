@@ -2,6 +2,7 @@ package zakhi.aoc2018
 
 import zakhi.aoc2018.Army.*
 import zakhi.helpers.entireTextOf
+import zakhi.helpers.fail
 import zakhi.helpers.wholeNumbers
 import kotlin.text.RegexOption.DOT_MATCHES_ALL
 
@@ -125,5 +126,3 @@ private data class Attack(
 private enum class Army {
     ImmuneSystem, Infection
 }
-
-fun fail(message: String? = null): Nothing = throw if (message == null) Exception() else Exception(message)
