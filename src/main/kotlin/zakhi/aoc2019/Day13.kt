@@ -5,7 +5,7 @@ import kotlin.math.sign
 
 
 fun main() {
-    val input = entireTextOf("aoc2019/day13").trim().split(",").map { it.toInt() }
+    val input = readProgramFrom(entireTextOf("aoc2019/day13"))
 
     val game = ArcadeGame(input)
     game.play()
@@ -22,7 +22,7 @@ fun main() {
 private class ArcadeGame(
     program: List<Int>
 ) {
-    private val computer = IntCodeComputerV5(program, ::provideInput, ::handleOutput)
+    private val computer = IntCodeComputer(program, ::provideInput, ::handleOutput)
     private val tiles = mutableMapOf<Point, Int>().withDefault { 0 }
     private val tileStack = mutableListOf<Int>()
 
@@ -49,63 +49,4 @@ private class ArcadeGame(
             tileStack.clear()
         }
     }
-}
-
-private class IntCodeComputerV5(
-    program: List<Int>,
-    private val inputProvider: () -> Int,
-    private val outputConsumer: (Int) -> Unit
-) {
-    private val memory = program.withIndex().associate { (index, value) -> index to value }.toMutableMap().withDefault { 0 }
-    private var position = 0
-    private var relativeBase = 0
-
-    fun start() {
-        while (true) {
-            val currentPosition = position
-
-            when (currentCommand) {
-                1 -> set(3, value = arg(1) + arg(2))
-                2 -> set(3, value = arg(1) * arg(2))
-                3 -> set(1, inputProvider())
-                4 -> outputConsumer(arg(1))
-                5 -> if (arg(1) != 0) position = arg(2)
-                6 -> if (arg(1) == 0) position = arg(2)
-                7 -> set(3, value = if (arg(1) < arg(2)) 1 else 0)
-                8 -> set(3, value = if (arg(1) == arg(2)) 1 else 0)
-                9 -> relativeBase += arg(1)
-                99 -> return
-            }
-
-            if (position == currentPosition) {
-                position += currentCommandSize
-            }
-        }
-    }
-
-    private val currentCommand get() = memory.getValue(position).digits.takeLast(2).join().toInt()
-
-    private val currentCommandSize get() = when (currentCommand) {
-        in 3..4 -> 2
-        in 5..6 -> 3
-        9 -> 2
-        else -> 4
-    }
-
-    private fun arg(index: Int): Int {
-        val argument = memory.getValue(position + index)
-
-        return when (parameterMode(index)) {
-            1 -> argument
-            2 -> memory.getValue(relativeBase + argument)
-            else -> memory.getValue(argument)
-        }
-    }
-
-    private fun set(index: Int, value: Int) {
-        val offset = if (parameterMode(index) == 2) relativeBase else 0
-        memory[memory.getValue(position + index) + offset] = value
-    }
-
-    private fun parameterMode(index: Int) = memory.getValue(position).digits.reversed().drop(2).getOrNull(index - 1) ?: 0
 }
