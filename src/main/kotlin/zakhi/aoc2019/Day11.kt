@@ -1,6 +1,6 @@
 package zakhi.aoc2019
 
-import zakhi.aoc2019.RobotDirection.*
+import zakhi.aoc2019.Direction.*
 import zakhi.aoc2019.RobotState.*
 import zakhi.helpers.*
 import java.math.BigInteger
@@ -133,14 +133,4 @@ private enum class RobotState {
     Painting, Moving;
 
     fun next() = values().toList().cyclicNextFrom(ordinal)
-}
-
-private enum class RobotDirection(val offset: Point) {
-    Up(0 to -1),
-    Right(1 to 0),
-    Down(0 to 1),
-    Left(-1 to 0);
-
-    fun turnRight(): RobotDirection = values().toList().cyclicNextFrom(ordinal)
-    fun turnLeft(): RobotDirection = values().toList().cyclicPreviousFrom(ordinal)
 }
