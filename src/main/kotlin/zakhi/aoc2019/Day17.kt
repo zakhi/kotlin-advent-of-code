@@ -5,10 +5,10 @@ import zakhi.helpers.*
 
 
 fun main() {
-    val input = entireTextOf("aoc2019/day17").trim().split(",").map { it.toInt() }
+    val input = readProgramFrom(entireTextOf("aoc2019/day17"))
 
-    val output = mutableListOf<Int>()
-    IntCodeComputer(input, { 0 }, { output.add(it) }).start()
+    val output = mutableListOf<Long>()
+    IntcodeComputer(input, { 0 }, { output.add(it) }).start()
     val scaffolds = Scaffolds.create(output)
 
     val alignmentParametersSum = scaffolds.intersections.sumOf { it.x * it.y }
@@ -16,9 +16,9 @@ fun main() {
 
     val routeRoutines = RouteRoutines(scaffolds.route())
     val instructionInput = input.toMutableList().apply { set(0, 2) }
-    var dust = 0
+    var dust = 0L
 
-    IntCodeComputer(instructionInput, inputProvider = routeRoutines::feed, outputConsumer = { dust = it }).start()
+    IntcodeComputer(instructionInput, inputProvider = routeRoutines::feed, outputConsumer = { dust = it }).start()
     println("The amount of dust is $dust")
 }
 
@@ -29,14 +29,14 @@ private class Scaffolds(
     private val robotStartDirection: Direction
 ) {
     companion object {
-        fun create(data: List<Int>): Scaffolds {
+        fun create(data: List<Long>): Scaffolds {
             val points = mutableSetOf<Point>()
             lateinit var startPosition: Point
             lateinit var startDirection: Direction
 
             var (x, y) = 0 to 0
 
-            data.map { it.toChar() }.forEach { char ->
+            data.map { it.toInt().toChar() }.forEach { char ->
                 when (char) {
                     '#' -> {
                         points.add(x to y)
@@ -104,7 +104,7 @@ private class RouteRoutines(route: List<String>) {
         addInputSequence("n")
     }
 
-    fun feed(): Int = feedData.removeFirst().code
+    fun feed(): Long = feedData.removeFirst().code.toLong()
 
     private fun addInputSequence(sequence: String) {
         sequence.charList().forEach { feedData.add(it) }

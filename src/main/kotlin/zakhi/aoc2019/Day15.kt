@@ -16,8 +16,8 @@ fun main() {
     println("The number of minutes to fill the room with oxygen is ${droidArea.maxDistanceForOxygen}")
 }
 
-private class DroidArea(program: List<Int>) {
-    private val droid = IntCodeComputer(program, ::provideInput, ::handleOutput)
+private class DroidArea(program: List<Long>) {
+    private val droid = IntcodeComputer(program, ::provideInput, ::handleOutput)
     private val route = LinkedList(listOf(0 to 0))
     private val roomMap = mutableMapOf(route.last to Empty)
     private val distanceMap = mutableMapOf(route.last to 0).withDefault { Int.MAX_VALUE }
@@ -44,26 +44,26 @@ private class DroidArea(program: List<Int>) {
         return distance
     }
 
-    private fun provideInput(): Int {
+    private fun provideInput(): Long {
         val position = route.last
         val nextUnknown = position.adjacentNeighbors.find { it !in roomMap }
 
         if (nextUnknown != null) {
             route.add(nextUnknown)
-            return DroidDirection.findByOffset(nextUnknown - position).value
+            return DroidDirection.findByOffset(nextUnknown - position).value.toLong()
         }
 
         if (route.size == 1) {
             droid.stop()
-            return North.value
+            return North.value.toLong()
         }
 
         route.removeLast()
-        return DroidDirection.findByOffset(route.last - position).value
+        return DroidDirection.findByOffset(route.last - position).value.toLong()
     }
 
-    private fun handleOutput(value: Int) {
-        val status = DroidStatus.of(value)
+    private fun handleOutput(value: Long) {
+        val status = DroidStatus.of(value.toInt())
         val position = route.last
 
         roomMap[position] = when (status) {

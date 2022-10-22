@@ -28,4 +28,4 @@ val Int.isEven get() = this % 2 == 0
 fun Iterable<Int>.product(): Int = reduce(Math::multiplyExact)
 fun Iterable<Long>.product(): Long = reduce(Math::multiplyExact)
 
-val Int.digits: List<Int> get() = toString().map { it.digitToInt() }
+val Number.digits: List<Int> get() = toString().map { it.digitToInt() }

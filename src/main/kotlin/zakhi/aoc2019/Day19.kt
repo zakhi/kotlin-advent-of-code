@@ -25,12 +25,14 @@ fun main() {
     println("The closest point to emitter is coded as ${point.x * 10000 + point.y}")
 }
 
-private val program = entireTextOf("aoc2019/day19").trim().split(",").map { it.toInt() }
+private val program = readProgramFrom(entireTextOf("aoc2019/day19"))
 private val cache = mutableMapOf<Point, Boolean>()
 
 private fun Point.pulled(): Boolean = cache.getOrPut(this) {
-    var output by notNull<Int>()
-    IntCodeComputer(program, inputProvider = mutableListOf(x, y)::removeFirst, outputConsumer = { output = it }).start()
+    val coordinates = mutableListOf(x, y)
+    var output by notNull<Long>()
+
+    IntcodeComputer(program, inputProvider = { coordinates.removeFirst().toLong() }, outputConsumer = { output = it }).start()
     output > 0
 }
 
