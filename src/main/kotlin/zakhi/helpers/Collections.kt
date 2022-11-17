@@ -46,5 +46,6 @@ inline fun <T, R : Comparable<R>> Sequence<T>.minBy(selector: (T) -> R) = minByO
 
 fun <T : Comparable<T>> Iterable<T>.max(): T = maxOrNull() ?: throw NoSuchElementException()
 fun <T : Comparable<T>> Iterable<T>.min(): T = minOrNull() ?: throw NoSuchElementException()
+fun <T : Comparable<T>> Iterable<T>.range(): ClosedRange<T> = min()..max()
 
 fun <K, V> Map<K, V>.firstKeyByValue(value: V): K = entries.first { it.value == value }.key
