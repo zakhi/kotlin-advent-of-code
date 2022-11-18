@@ -5,7 +5,7 @@ import zakhi.helpers.*
 
 fun main() {
     val nodes = linesOf("aoc2016/day22").drop(2).map { line ->
-        val match = Regex("""/dev/grid/node-x(\d+)-y(\d+)\s+(\d+)T\s+(\d+)T.*""").matchEntire(line) ?: throw Exception("Invalid line $line")
+        val match = Regex("""/dev/grid/node-x(\d+)-y(\d+)\s+(\d+)T\s+(\d+)T.*""").matchEntire(line) ?: fail("Invalid line $line")
         val (x, y, size, used) = match.destructured
         Node(x.toInt() to y.toInt(), size.toInt(), used.toInt())
     }.toList()

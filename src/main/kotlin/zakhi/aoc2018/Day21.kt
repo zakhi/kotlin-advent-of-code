@@ -1,14 +1,16 @@
 package zakhi.aoc2018
 
+import zakhi.helpers.fail
 import zakhi.helpers.linesOf
 
 
 fun main() {
     val input = linesOf("aoc2018/day21").toList()
-    val (ipRegister) = Regex("""#ip (\d)""").matchEntire(input.first())?.destructured ?: throw Exception("Cannot determine IP register")
+    val (ipRegister) = Regex("""#ip (\d)""").matchEntire(input.first())?.destructured ?: fail("Cannot determine IP register")
 
     val program = input.drop(1).map { line ->
-        val (name, a, b, c) = Regex("""(\w+) (\d+) (\d+) (\d+)""").matchEntire(line)?.destructured ?: throw Exception("Error parsing: $line")
+        val (name, a, b, c) = Regex("""(\w+) (\d+) (\d+) (\d+)""").matchEntire(line)?.destructured ?:
+        fail("Error parsing: $line")
         DeviceInstruction(name, a.toInt(), b.toInt(), c.toInt())
     }
 

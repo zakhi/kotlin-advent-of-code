@@ -1,5 +1,6 @@
 package zakhi.aoc2015
 
+import zakhi.helpers.fail
 import zakhi.helpers.matchEachLineOf
 
 
@@ -37,7 +38,7 @@ fun main() {
 
 
 private fun parseProperty(text: String): Pair<String, Int> {
-    val (name, count) = Regex("""(\w+): (\d+)""").matchEntire(text)?.destructured ?: throw Exception("property '$text' is invalid")
+    val (name, count) = Regex("""(\w+): (\d+)""").matchEntire(text)?.destructured ?: fail("property '$text' is invalid")
     return name to count.toInt()
 }
 

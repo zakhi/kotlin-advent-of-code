@@ -1,6 +1,7 @@
 package zakhi.aoc2017
 
 import zakhi.helpers.entireTextOf
+import zakhi.helpers.fail
 import zakhi.helpers.mapDestructured
 
 
@@ -69,4 +70,4 @@ private data class StateAction(
 )
 
 private fun Regex.findSingleGroup(input: String): String =
-    find(input)?.groupValues?.get(1) ?: throw Exception("Cannot find match in $input")
+    find(input)?.groupValues?.get(1) ?: fail("Cannot find match in $input")

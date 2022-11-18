@@ -60,7 +60,7 @@ private class FerryWithWaypoint {
         1 -> -y to x
         2 -> -x to -y
         3 -> y to -x
-        else -> throw Exception("Invalid turn amount $amount")
+        else -> fail("Invalid turn amount $amount")
     }
 }
 

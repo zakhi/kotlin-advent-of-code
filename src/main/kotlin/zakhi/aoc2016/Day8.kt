@@ -1,10 +1,6 @@
 package zakhi.aoc2016
 
-import zakhi.helpers.Point
-import zakhi.helpers.linesOf
-import zakhi.helpers.grid
-import zakhi.helpers.x
-import zakhi.helpers.y
+import zakhi.helpers.*
 
 
 fun main() {
@@ -26,7 +22,7 @@ private class LightDisplay {
     val numberOfLights get() = lights.size
 
     fun perform(operation: String) {
-        lightRectangle(operation) || rotateRow(operation) || rotateColumn(operation) || throw Exception("invalid operation $operation")
+        lightRectangle(operation) || rotateRow(operation) || rotateColumn(operation) || fail("invalid operation $operation")
     }
 
     fun print() {

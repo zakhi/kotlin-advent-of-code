@@ -1,5 +1,6 @@
 package zakhi.aoc2020
 
+import zakhi.helpers.fail
 import zakhi.helpers.matchEachLineOf
 
 fun main() {
@@ -33,7 +34,7 @@ private data class Instruction(
     fun invert() = copy(name = when (name) {
         "jmp" -> "nop"
         "nop" -> "jmp"
-        else -> throw Exception("$this is not invertible")
+        else -> fail("$this is not invertible")
     })
 }
 

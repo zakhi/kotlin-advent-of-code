@@ -1,6 +1,7 @@
 package zakhi.aoc2015
 
 import zakhi.helpers.entireTextOf
+import zakhi.helpers.fail
 
 
 fun main() {
@@ -21,11 +22,11 @@ private val basementEntryPosition: Int get() {
         if (currentFloor == -1) return index + 1
     }
 
-    throw Exception("Santa never reached the basement")
+    fail("Santa never reached the basement")
 }
 
 private fun floorOffset(char: Char): Int = when (char) {
     '(' -> 1
     ')' -> -1
-    else -> throw Exception("Unexpected character $char")
+    else -> fail("Unexpected character $char")
 }

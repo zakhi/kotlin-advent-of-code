@@ -1,15 +1,16 @@
 package zakhi.aoc2018
 
 import zakhi.helpers.divisors
+import zakhi.helpers.fail
 import zakhi.helpers.linesOf
 
 
 fun main() {
     val input = linesOf("aoc2018/day19").toList()
-    val ipRegister = Regex("""#ip (\d)""").matchEntire(input.first())?.groupValues?.get(1)?.toInt() ?: throw Exception("Cannot determine IP register")
+    val ipRegister = Regex("""#ip (\d)""").matchEntire(input.first())?.groupValues?.get(1)?.toInt() ?: fail("Cannot determine IP register")
 
     val program = input.drop(1).map { line ->
-        val groups = Regex("""(\w+) (\d+) (\d+) (\d+)""").matchEntire(line)?.groupValues ?: throw Exception("Error parsing: $line")
+        val groups = Regex("""(\w+) (\d+) (\d+) (\d+)""").matchEntire(line)?.groupValues ?: fail("Error parsing: $line")
         ProgramInstruction(groups[1], groups.drop(2).map { it.toInt() })
     }
 
@@ -57,7 +58,7 @@ private class Device(
                     "eqir" -> if (value(1) == register(2)) 1 else 0
                     "eqri" -> if (register(1) == value(2)) 1 else 0
                     "eqrr" -> if (register(1) == register(2)) 1 else 0
-                    else -> throw Exception("Unknown operation $operation")
+                    else -> fail("Unknown operation $operation")
                 }
             }
 

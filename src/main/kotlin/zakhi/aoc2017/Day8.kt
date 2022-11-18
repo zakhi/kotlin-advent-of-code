@@ -1,5 +1,6 @@
 package zakhi.aoc2017
 
+import zakhi.helpers.fail
 import zakhi.helpers.matchEachLineOf
 
 
@@ -47,7 +48,7 @@ private class ConditionalProcessor {
             ">=" -> value >= sourceValue
             "==" -> value == sourceValue
             "!=" -> value != sourceValue
-            else -> throw Exception("Unknown conditional operator $operator")
+            else -> fail("Unknown conditional operator $operator")
         }
     }
 }

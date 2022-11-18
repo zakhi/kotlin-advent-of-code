@@ -1,5 +1,6 @@
 package zakhi.aoc2015
 
+import zakhi.helpers.fail
 import zakhi.helpers.linesOf
 import zakhi.helpers.tryMatch
 
@@ -43,7 +44,7 @@ private class Computer(
             Regex("""jmp ([+-]?\d+)""") to { (offset) -> position += offset.toInt() }
             Regex("""jie (\w), ([+-]?\d+)""") to { (r, offset) -> if (registers.getValue(r) % 2 == 0) position += offset.toInt() }
             Regex("""jio (\w), ([+-]?\d+)""") to { (r, offset) -> if (registers.getValue(r) == 1) position += offset.toInt() }
-        } ?: throw Exception("Unknown instruction $instruction")
+        } ?: fail("Unknown instruction $instruction")
 
         if (currentPosition == position) position += 1
     }

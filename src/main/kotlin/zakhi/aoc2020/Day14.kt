@@ -1,5 +1,6 @@
 package zakhi.aoc2020
 
+import zakhi.helpers.fail
 import zakhi.helpers.join
 import zakhi.helpers.linesOf
 import kotlin.math.pow
@@ -36,10 +37,10 @@ private abstract class BitmaskSystem {
     protected abstract fun updateMasks(mask: String)
     protected abstract fun setMemoryValue(address: Long, value: Long)
 
-    private fun String.parseAsMask(): String = Regex("""mask = ([01X]+)""").matchEntire(this)?.groupValues?.get(1) ?: throw Exception("Invalid mask in $this")
+    private fun String.parseAsMask(): String = Regex("""mask = ([01X]+)""").matchEntire(this)?.groupValues?.get(1) ?: fail("Invalid mask in $this")
 
     private fun String.parseAsMemorySet(): List<Long> =
-        Regex("""mem\[(\d+)] = (\d+)""").matchEntire(this)?.groupValues?.slice(1..2)?.map { it.toLong() } ?: throw Exception("Invalid instruction $this")
+        Regex("""mem\[(\d+)] = (\d+)""").matchEntire(this)?.groupValues?.slice(1..2)?.map { it.toLong() } ?: fail("Invalid instruction $this")
 }
 
 

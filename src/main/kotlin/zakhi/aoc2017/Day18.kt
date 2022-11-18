@@ -1,5 +1,6 @@
 package zakhi.aoc2017
 
+import zakhi.helpers.fail
 import zakhi.helpers.matchEachLineOf
 import java.util.*
 
@@ -57,7 +58,7 @@ private abstract class Assembly(
                 "mul" -> registers[x] = valueOf(x) * valueOf(y)
                 "mod" -> registers[x] = valueOf(x).mod(valueOf(y))
                 "jgz" -> if (valueOf(x) > 0) jump = valueOf(y).toInt()
-                else -> throw Exception("Invalid instruction $name")
+                else -> fail("Invalid instruction $name")
             }
 
             position += jump

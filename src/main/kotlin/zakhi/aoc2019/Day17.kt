@@ -97,7 +97,7 @@ private class RouteRoutines(route: List<String>) {
     private val feedData = mutableListOf<Char>()
 
     init {
-        val patternedRoute = makeRouteFullyPatterned(PatternedRoute(route.joinToString(","))) ?: throw Exception("Cannot find patterns in $route")
+        val patternedRoute = makeRouteFullyPatterned(PatternedRoute(route.joinToString(","))) ?: fail("Cannot find patterns in $route")
 
         addInputSequence(patternedRoute.route)
         patternedRoute.patterns.forEach { addInputSequence(it) }
@@ -147,5 +147,5 @@ private fun directionFromChar(char: Char): Direction = when (char) {
     'v' -> Down
     '>' -> Right
     '<' -> Left
-    else -> throw Exception("Invalid direction character $char")
+    else -> fail("Invalid direction character $char")
 }

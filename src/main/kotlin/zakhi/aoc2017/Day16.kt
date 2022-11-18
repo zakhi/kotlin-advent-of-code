@@ -1,6 +1,7 @@
 package zakhi.aoc2017
 
 import zakhi.helpers.entireTextOf
+import zakhi.helpers.fail
 import zakhi.helpers.join
 import zakhi.helpers.tryMatch
 
@@ -26,7 +27,7 @@ private fun performDance(moves: List<String>, positions: String): String =
             Regex("""s(\d+)""") to { (x) -> position.takeLast(x.toInt()) + position.dropLast(x.toInt()) }
             Regex("""x(\w+)/(\w+)""") to { (a, b) -> position.swap(a.toInt(), b.toInt()) }
             Regex("""p(\w)/(\w)""") to { (a, b) -> position.swap(position.indexOf(a), position.indexOf(b)) }
-        } ?: throw Exception("Invalid move $move")
+        } ?: fail("Invalid move $move")
     }
 
 private fun findRepeatingOrder(initialOrder: String, moves: List<String>): Pair<Int, Int> {
@@ -40,7 +41,7 @@ private fun findRepeatingOrder(initialOrder: String, moves: List<String>): Pair<
         orderOccurrences[order] = time
     }
 
-    throw Exception("no repeating order found")
+    fail("no repeating order found")
 }
 
 private fun String.swap(firstIndex: Int, secondIndex: Int): String {

@@ -3,6 +3,7 @@ package zakhi.aoc2018
 import zakhi.aoc2018.Acre.*
 import zakhi.helpers.Point
 import zakhi.helpers.allNeighbors
+import zakhi.helpers.fail
 import zakhi.helpers.linesOf
 
 
@@ -53,5 +54,5 @@ private fun acreFrom(char: Char): Acre = when (char) {
     '.' -> OpenGround
     '|' -> Trees
     '#' -> Lumberyard
-    else -> throw Exception("Unknown char $char")
+    else -> fail("Unknown char $char")
 }

@@ -91,5 +91,5 @@ private fun areaTypeOf(char: Char) = when (char) {
     '.', '@' -> Ground
     in 'A'..'Z' -> Door(char)
     in 'a'..'z' -> Key(char)
-    else -> throw Exception("Invalid character in map $char")
+    else -> fail("Invalid character in map $char")
 }

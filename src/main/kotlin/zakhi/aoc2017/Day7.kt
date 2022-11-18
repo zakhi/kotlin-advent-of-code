@@ -1,5 +1,6 @@
 package zakhi.aoc2017
 
+import zakhi.helpers.fail
 import zakhi.helpers.matchEachLineOf
 
 
@@ -26,7 +27,7 @@ private class ProgramTower(allPrograms: List<Program>) {
     fun findBottomProgram(): Program = root
 
     fun findBalancingWeight(): Int {
-        val (program, weightDiff) = findOddProgramDirectlyAbove(root) ?: throw Exception("No balancing required")
+        val (program, weightDiff) = findOddProgramDirectlyAbove(root) ?: fail("No balancing required")
         return weightDiff + findProgramToBalanceAbove(program).weight
     }
 

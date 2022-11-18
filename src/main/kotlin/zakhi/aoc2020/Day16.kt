@@ -1,6 +1,7 @@
 package zakhi.aoc2020
 
 import zakhi.helpers.entireTextOf
+import zakhi.helpers.fail
 import zakhi.helpers.product
 import zakhi.helpers.second
 
@@ -8,7 +9,7 @@ import zakhi.helpers.second
 fun main() {
     val (rulesText, ticketTest, otherTicketsText) = entireTextOf("aoc2020/day16").trim().split("\n\n")
     val rules = rulesText.lines().map { line ->
-        val (name, firstRange, secondRange) = Regex("""(.+): ([\d-]+) or ([\d-]+)""").matchEntire(line)?.destructured ?: throw Exception("Invalid rule $line")
+        val (name, firstRange, secondRange) = Regex("""(.+): ([\d-]+) or ([\d-]+)""").matchEntire(line)?.destructured ?: fail("Invalid rule $line")
         TicketRule(name, listOf(firstRange, secondRange).map {
             val (start, end) = it.split("-")
             start.toInt() .. end.toInt()

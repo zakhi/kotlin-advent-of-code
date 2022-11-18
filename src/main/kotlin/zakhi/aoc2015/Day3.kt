@@ -1,9 +1,6 @@
 package zakhi.aoc2015
 
-import zakhi.helpers.Point
-import zakhi.helpers.entireTextOf
-import zakhi.helpers.isOdd
-import zakhi.helpers.plus
+import zakhi.helpers.*
 
 
 fun main() {
@@ -42,5 +39,5 @@ private fun offsetOf(move: Char): Point = when (move) {
     '>' -> 1 to 0
     'v' -> 0 to -1
     '<' -> -1 to 0
-    else -> throw Exception("Illegal move $move")
+    else -> fail("Illegal move $move")
 }

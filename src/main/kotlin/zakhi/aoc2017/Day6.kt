@@ -1,6 +1,7 @@
 package zakhi.aoc2017
 
 import zakhi.helpers.entireTextOf
+import zakhi.helpers.fail
 
 
 fun main() {
@@ -19,7 +20,7 @@ private class Memory(initialBanks: List<Int>) {
 
     fun redistributeUntilDuplicateFound() {
         while (true) {
-            val maxBlocks = banks.maxOrNull() ?: throw Exception("Banks are empty")
+            val maxBlocks = banks.maxOrNull() ?: fail("Banks are empty")
             val topBank = banks.indexOf(maxBlocks)
 
             banks[topBank] = 0

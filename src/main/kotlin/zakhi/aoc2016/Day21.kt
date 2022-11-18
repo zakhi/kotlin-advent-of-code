@@ -1,13 +1,10 @@
 package zakhi.aoc2016
 
-import zakhi.helpers.isOdd
-import zakhi.helpers.join
-import zakhi.helpers.linesOf
-import zakhi.helpers.tryMatch
+import zakhi.helpers.*
 
 
 fun main() {
-    val instructions = linesOf("aoc2016/day21").mapNotNull { create(it) }.toList()
+    val instructions = linesOf("aoc2016/day21").map { create(it) }.toList()
     val scrambler = Scrambler(instructions)
 
     val scrambledPassword = scrambler.scramble("abcdefgh")
@@ -25,7 +22,7 @@ private fun create(instruction: String): ScramblerInstruction = tryMatch(instruc
     Regex("""rotate based on position of letter (\w)""") to { (letter) -> RotateBasedOnPosition(letter.first()) }
     Regex("""reverse positions (\d+) through (\d+)""") to { (a, b) -> Reverse(a.toInt(), b.toInt()) }
     Regex("""move position (\d+) to position (\d+)""") to { (a, b) -> MovePosition(a.toInt(), b.toInt()) }
-} ?: throw Exception("Invalid instruction: $instruction")
+} ?: fail("Invalid instruction: $instruction")
 
 private interface ScramblerInstruction {
     fun scramble(value: String): String

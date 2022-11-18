@@ -1,6 +1,7 @@
 package zakhi.aoc2020
 
-import zakhi.helpers.*
+import zakhi.helpers.linesOf
+import zakhi.helpers.range
 
 
 fun main() {

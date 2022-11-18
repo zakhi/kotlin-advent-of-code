@@ -1,17 +1,14 @@
 package zakhi.aoc2018
 
-import zakhi.helpers.charList
-import zakhi.helpers.linesOf
-import zakhi.helpers.max
-import zakhi.helpers.min
+import zakhi.helpers.*
 
 
 fun main() {
     val input = linesOf("aoc2018/day12").toList()
-    val initialState = Regex("""[.#]+""").find(input.first())?.value ?: throw Exception("Invalid initial state")
+    val initialState = Regex("""[.#]+""").find(input.first())?.value ?: fail("Invalid initial state")
 
     val rules = input.drop(2).associate {
-        val (source, target) = Regex("""([#.]+) => ([#.])""").matchEntire(it)?.destructured ?: throw Exception("invalid rule: $it")
+        val (source, target) = Regex("""([#.]+) => ([#.])""").matchEntire(it)?.destructured ?: fail("invalid rule: $it")
         source to target
     }
 

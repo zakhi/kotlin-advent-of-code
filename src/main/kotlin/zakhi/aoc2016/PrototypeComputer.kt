@@ -1,5 +1,6 @@
 package zakhi.aoc2016
 
+import zakhi.helpers.fail
 import zakhi.helpers.second
 
 class Computer {
@@ -17,7 +18,7 @@ class Computer {
                 "dec" -> update(arguments.first(), -1)
                 "jnz" -> jump(arguments.first(), arguments.second())
                 "tgl" -> toggle(arguments.first(), pointer, instructions)
-                else -> throw Exception("Unknown instruction $code")
+                else -> fail("Unknown instruction $code")
             }
         }
     }

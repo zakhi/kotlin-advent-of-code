@@ -28,7 +28,7 @@ class HexGridTrack {
             "se" -> 1 to -1
             "nw" -> -1 to 1
             "sw" -> -1 to -1
-            else -> throw Exception("Invalid direction $direction")
+            else -> fail("Invalid direction $direction")
         }
 
         furthestDistance = maxOf(furthestDistance, distanceFromStart)

@@ -1,9 +1,6 @@
 package zakhi.aoc2018
 
-import zakhi.helpers.Point
-import zakhi.helpers.entireTextOf
-import zakhi.helpers.max
-import zakhi.helpers.plus
+import zakhi.helpers.*
 
 
 fun main() {
@@ -67,7 +64,7 @@ private fun offsetOf(direction: Char) = when (direction) {
     'S' -> 0 to -1
     'W' -> 1 to 0
     'E' -> -1 to 0
-    else -> throw Exception("Invalid direction $direction")
+    else -> fail("Invalid direction $direction")
 }
 
 private fun <E> MutableSet<E>.replace(replacement: (E) -> E) {

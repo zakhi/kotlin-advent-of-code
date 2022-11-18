@@ -1,7 +1,8 @@
 package zakhi.aoc2016
 
-import zakhi.helpers.linesOf
+import zakhi.helpers.fail
 import zakhi.helpers.join
+import zakhi.helpers.linesOf
 
 
 fun main() {
@@ -27,7 +28,7 @@ private class KeyPad {
                 'D' -> if (position in 7..9) 0 else 3
                 'L' -> if (position in listOf(1, 4, 7)) 0 else -1
                 'R' -> if (position in listOf(3, 6, 9)) 0 else 1
-                else -> throw Exception("Invalid move $move")
+                else -> fail("Invalid move $move")
             }
         }
 
@@ -52,7 +53,7 @@ private class ComplexKeyPad {
                 'D' -> downMoves[position]
                 'L' -> leftMoves[position]
                 'R' -> rightMoves[position]
-                else -> throw Exception("invalid move $move")
+                else -> fail("invalid move $move")
             } ?: position
         }
 

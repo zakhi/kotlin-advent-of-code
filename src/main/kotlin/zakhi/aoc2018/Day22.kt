@@ -6,8 +6,8 @@ import zakhi.helpers.*
 
 fun main() {
     val input = entireTextOf("aoc2018/day22")
-    val depth = Regex("""depth: (\d+)""").find(input)?.groupValues?.get(1)?.toInt() ?: throw Exception("cannot find depth")
-    val target = Regex("""target: (\d+),(\d+)""").find(input)?.groupValues?.drop(1)?.map { it.toInt() }?.toPoint() ?: throw Exception("cannot find target")
+    val depth = Regex("""depth: (\d+)""").find(input)?.groupValues?.get(1)?.toInt() ?: fail("cannot find depth")
+    val target = Regex("""target: (\d+),(\d+)""").find(input)?.groupValues?.drop(1)?.map { it.toInt() }?.toPoint() ?: fail("cannot find target")
 
     val cave = Cave(depth, target)
 
@@ -55,7 +55,7 @@ private class Cave(
         0 -> listOf(ClimbingGear, Torch)
         1 -> listOf(ClimbingGear, Neither)
         2 -> listOf(Torch, Neither)
-        else -> throw Exception("Invalid type $type")
+        else -> fail("Invalid type $type")
     }
 }
 

@@ -1,6 +1,8 @@
 package zakhi.aoc2019
 
-import zakhi.helpers.*
+import zakhi.helpers.fail
+import zakhi.helpers.linesOf
+import zakhi.helpers.tryMatch
 import java.math.BigInteger
 import java.math.BigInteger.ONE
 import java.math.BigInteger.ZERO
@@ -31,7 +33,7 @@ private data class LinearCongruentFunction(
     operator fun invoke(x: BigInteger): BigInteger = (a * x + b).mod(m)
 
     fun compose(other: LinearCongruentFunction): LinearCongruentFunction {
-        if (m != other.m) throw Exception("Cannot compose functions with different mod")
+        if (m != other.m) fail("Cannot compose functions with different mod")
         return copy(a = (a * other.a).mod(m), b = (b * other.a + other.b).mod(m))
     }
 
@@ -57,7 +59,7 @@ private class Deck(
             Regex("""deal into new stack""") to { LinearCongruentFunction(-ONE, -ONE, deckSize) }
             Regex("""cut (-?\d+)""") to { (n) -> LinearCongruentFunction(ONE, -BigInteger(n), deckSize) }
             Regex("""deal with increment (\d+)""") to { (n) -> LinearCongruentFunction(BigInteger(n), ZERO, deckSize) }
-        } ?: throw Exception("Invalid instruction $instruction"))
+        } ?: fail("Invalid instruction $instruction"))
     }
 
     fun newIndexOf(position: Long, shuffles: Long = 1L): Long =

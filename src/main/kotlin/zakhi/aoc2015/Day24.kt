@@ -1,6 +1,7 @@
 package zakhi.aoc2015
 
 import zakhi.helpers.combinations
+import zakhi.helpers.fail
 import zakhi.helpers.linesOf
 import zakhi.helpers.product
 
@@ -8,10 +9,10 @@ import zakhi.helpers.product
 fun main() {
     val packages = linesOf("aoc2015/day24").map { it.toLong() }.toList()
 
-    val firstGroupOfThree = smallestFirstGroupOf(packages, numberOfGroups = 3) ?: throw Exception("Could not find configuration of 3 groups")
+    val firstGroupOfThree = smallestFirstGroupOf(packages, numberOfGroups = 3) ?: fail("Could not find configuration of 3 groups")
     println("The quantum entanglement of the first of 3 groups is ${firstGroupOfThree.product()}")
 
-    val firstGroupOfFour = smallestFirstGroupOf(packages, numberOfGroups = 4) ?: throw Exception("Could not find configuration of 4 groups")
+    val firstGroupOfFour = smallestFirstGroupOf(packages, numberOfGroups = 4) ?: fail("Could not find configuration of 4 groups")
     println("The quantum entanglement of the first of 4 groups is ${firstGroupOfFour.product()}")
 }
 

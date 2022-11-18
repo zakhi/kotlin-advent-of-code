@@ -1,5 +1,6 @@
 package zakhi.aoc2015
 
+import zakhi.helpers.fail
 import zakhi.helpers.matchEachLineOf
 import zakhi.helpers.tryMatch
 
@@ -35,7 +36,7 @@ private fun signalOf(wire: String): Int {
         Regex("""NOT (\w+)""") to { (wire) -> signalOf(wire).inv() }
         Regex("""(\w+) LSHIFT (\d+)""") to { (wire, number) -> signalOf(wire) shl number.toInt() }
         Regex("""(\w+) RSHIFT (\d+)""") to { (wire, number) -> signalOf(wire) shr number.toInt() }
-    } ?: throw Exception("cannot find formula for $instruction")
+    } ?: fail("cannot find formula for $instruction")
 
     wireValues[wire] = value
     return value
