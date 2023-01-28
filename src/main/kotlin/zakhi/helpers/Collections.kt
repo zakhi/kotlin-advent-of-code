@@ -57,3 +57,8 @@ fun <T> Stack<T>.head() = lastOrNull()
 fun <T> Stack<T>.push(value: T) = add(value)
 fun <T> Stack<T>.pop() = pop(1).first()
 fun <T> Stack<T>.pop(n: Int = 1) = (1..n).map { removeLast() }
+
+
+fun <T> List<List<T>>.transpose(): List<List<T>> = (0 ..< maxOf { it.size }).map { i ->
+    mapNotNull { it.getOrNull(i) }
+}
