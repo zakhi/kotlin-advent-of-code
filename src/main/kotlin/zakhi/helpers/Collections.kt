@@ -51,7 +51,7 @@ fun <T : Comparable<T>> Iterable<T>.range(): ClosedRange<T> = min()..max()
 fun <K, V> Map<K, V>.firstKeyByValue(value: V): K = entries.first { it.value == value }.key
 
 typealias Stack<T> = MutableList<T>
-fun <T> stackOf(): Stack<T> = mutableListOf<T>()
+fun <T> stackOf(): Stack<T> = mutableListOf()
 
 fun <T> Stack<T>.head() = lastOrNull()
 fun <T> Stack<T>.push(value: T) = add(value)
