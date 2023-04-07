@@ -9,7 +9,7 @@ fun main() {
         line.mapIndexedNotNull { col, char -> if (char != ' ') (col to row) to char else null }
     }.toMap()
 
-    var packetLocation = PathVector(position = path.keys.first { it.row == 0 }, direction = Down)
+    var packetLocation = PathVector(position = path.keys.first { it.y == 0 }, direction = Down)
     var steps = 0
     val letters = mutableListOf<Char>()
 

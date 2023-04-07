@@ -11,21 +11,12 @@ fun main() {
     val messageTime = findMinimalDistanceTime(points)
 
     println("The message shows:")
-    displayPoints(points.map { it.positionAt(messageTime) })
+    printPoints(points.map { it.positionAt(messageTime) })
     println("The message appeared after $messageTime seconds")
 }
 
 private fun findMinimalDistanceTime(points: List<PointPOfLight>): Int =
     wholeNumbers().zipWithNext().first { (t1, t2) -> points.distanceAt(t2) > points.distanceAt(t1) }.first
-
-private fun displayPoints(points: List<Point>) {
-    val xs = points.minOf { it.x } .. points.maxOf { it.x }
-    val ys = points.minOf { it.y } .. points.maxOf { it.y }
-
-    ys.forEach { y ->
-        println(xs.join { x -> if (x to y in points) "##" else "  "  })
-    }
-}
 
 private fun List<PointPOfLight>.distanceAt(time: Int): Int {
     val positions = map { it.positionAt(time) }

@@ -5,12 +5,8 @@ import kotlin.math.absoluteValue
 
 typealias Point = Pair<Int, Int>
 
-
 val Point.x get() = first
 val Point.y get() = second
-
-val Point.column get() = x
-val Point.row get() = y
 
 fun List<Int>.toPoint(): Point {
     check(size == 2)
@@ -32,3 +28,13 @@ val Point.adjacentNeighbors: List<Point>
 
 val Point.allNeighbors: List<Point>
     get() = adjacentNeighbors + listOf(1 to 1, -1 to 1, -1 to -1, 1 to -1).map { this + it }
+
+
+fun printPoints(points: Iterable<Point>) {
+    val xs = points.minOf { it.x } .. points.maxOf { it.x }
+    val ys = points.minOf { it.y } .. points.maxOf { it.y }
+
+    ys.forEach { y ->
+        println(xs.join { x -> if (x to y in points) "##" else "  "  })
+    }
+}
