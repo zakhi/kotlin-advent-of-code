@@ -16,6 +16,8 @@ fun List<Int>.toPoint(): Point {
 operator fun Point.plus(offset: Point) = this.x + offset.x to this.y + offset.y
 operator fun Point.minus(offset: Point) = this.x - offset.x to this.y - offset.y
 operator fun Point.times(scalar: Int): Point = x * scalar to y * scalar
+operator fun Point.div(scalar: Int): Point = x / scalar to y / scalar
+fun Point.mod(scalar: Int): Point = x.mod(scalar) to y.mod(scalar)
 
 val Point.gridDistance get() = x.absoluteValue + y.absoluteValue
 
