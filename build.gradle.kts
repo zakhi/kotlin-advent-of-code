@@ -19,7 +19,7 @@ kotlin {
 tasks {
     withType<KotlinCompile> {
         kotlinOptions {
-            jvmTarget = "15"
+            jvmTarget = "17"
         }
 
         compilerOptions.freeCompilerArgs.add("-opt-in=kotlin.ExperimentalStdlibApi")
