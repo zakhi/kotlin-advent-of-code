@@ -21,8 +21,8 @@ fun Point.mod(scalar: Int): Point = x.mod(scalar) to y.mod(scalar)
 
 val Point.gridDistance get() = x.absoluteValue + y.absoluteValue
 
-fun grid(xs: Iterable<Int>, ys: Iterable<Int> = xs): Sequence<Point> = xs.asSequence().flatMap { x ->
-    ys.asSequence().map { y -> x to y }
+fun grid(xs: Iterable<Int>, ys: Iterable<Int> = xs): Sequence<Point> = ys.asSequence().flatMap { y ->
+    xs.asSequence().map { x -> x to y }
 }
 
 val Point.adjacentNeighbors: List<Point>
