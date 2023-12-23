@@ -3,10 +3,9 @@ package zakhi.helpers
 
 interface Heap<T : Any> {
 
+    fun isEmpty(): Boolean
     fun remove(): Pair<T, Int>
-
     operator fun set(element: T, value: Int)
-
     operator fun get(element: T): Int
 }
 
@@ -18,6 +17,8 @@ fun <T: Any> minHeapOf(vararg elements: Pair<T, Int>): Heap<T> = MinHeap<T>().ap
 class MinHeap<T : Any> : Heap<T> {
     private val indices = mutableMapOf<T, Int>()
     private val array = mutableListOf<Pair<T, Int>>()
+
+    override fun isEmpty(): Boolean = array.isEmpty()
 
     override fun remove(): Pair<T, Int> {
         check(array.isNotEmpty())
