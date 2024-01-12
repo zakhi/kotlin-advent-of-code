@@ -28,8 +28,11 @@ fun grid(xs: Iterable<Int>, ys: Iterable<Int> = xs): Sequence<Point> = ys.asSequ
 val Point.adjacentNeighbors: List<Point>
     get() = listOf(1 to 0, 0 to 1, -1 to 0, 0 to -1).map { this + it }
 
+val Point.diagonalNeighbors: List<Point>
+    get() = listOf(1 to 1, -1 to 1, -1 to -1, 1 to -1).map { this + it }
+
 val Point.allNeighbors: List<Point>
-    get() = adjacentNeighbors + listOf(1 to 1, -1 to 1, -1 to -1, 1 to -1).map { this + it }
+    get() = adjacentNeighbors + diagonalNeighbors
 
 
 fun printPoints(points: Iterable<Point>) {
