@@ -72,5 +72,5 @@ private fun winCountWithDiracDice(players: Pair<Player, Player>): Pair<Long, Lon
     }
 }
 
-operator fun Pair<Long, Long>.plus(other: Pair<Long, Long>) = first + other.first to second + other.second
-operator fun Pair<Long, Long>.times(count: Long) = first * count to second * count
+private operator fun Pair<Long, Long>.plus(other: Pair<Long, Long>) = first + other.first to second + other.second
+private operator fun Pair<Long, Long>.times(count: Long) = first * count to second * count
